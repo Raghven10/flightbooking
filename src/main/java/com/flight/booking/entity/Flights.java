@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -33,8 +35,9 @@ private static final long serialVersionUID = 1L;
 	@Column
 	private String destination;
 	
-	@Column
-	@Temporal(TemporalType.DATE)	
+	@Column	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date dateOfFlight;	
 	
 	@Column

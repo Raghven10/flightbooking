@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -55,6 +56,10 @@ public class Address implements Serializable{
 	
 	@Column
 	private String country;
+	
+	@OneToOne
+	@JoinColumn(name="BOOKING_ID")
+	private Booking booking;
 	
 	@ManyToOne
 	@JoinColumn(name="APP_USER_ID")

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,7 @@ public class BookingController {
 	    return service.findAll();
 	}
 	
-	@GetMapping(path="/bookking-all-user")
+	@GetMapping(path="/user-bookking-all")
 	public List<Booking> bookingsAllUser(Principal principal) {
 		
 		AppUser user = userService.findByEmail(principal.getName());
@@ -60,9 +61,11 @@ public class BookingController {
 	}
 	
 	
-	@PostMapping(path="/cancel-booking")
-	public Booking payment(@RequestBody Booking booking) {		
+	@PostMapping(path="/cancel-booking/{id}")
+	public Booking payment(@PathVariable("id") Long id) {		
 		
+		
+		Booking booking = service.findById(id);
 		service.cancel(booking);
 		
 		return booking;

@@ -24,8 +24,12 @@ public class PaymentServiceImpl implements PaymentService{
 	@Override
 	public void save(Payment a) {
 		
+		System.out.println("Payment Body: "+a);
 		repos.save(a);
 		Booking booking = a.getBooking_id();
+		System.out.println("Booking Details:   "+booking);
+		booking.setStatus("BOOKED");		
+		
 		service.finalizeBooking(booking);
 	}
 

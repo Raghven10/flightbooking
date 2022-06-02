@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,12 @@ public class FlightsController {
 	public List<Flights> flightsAll() {
 		
 	    return service.findAll();
+	}
+	
+	@GetMapping(path="/get-flight-detail/{id}")
+	public Flights getFlightDetail(@PathVariable ("id") Long id) {
+		
+	    return service.findById(id);
 	}
 	
 	@GetMapping(path="/flight-search")

@@ -43,19 +43,11 @@ public class Booking implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="APP_USER_ID")
 	private AppUser appUser;
-	
-	@OneToOne
-	@JoinColumn(name="ADDRESS_ID")
-	private Address address;
-	
+		
 	@OneToOne
 	@JoinColumn(name="FLIGHT_ID") // Booked Flight 
 	private Flights flight;
 	
-	@OneToOne
-	@JoinColumn(name="Transaction_ID")
-	private Payment payment;
-
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
