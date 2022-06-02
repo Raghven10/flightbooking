@@ -26,7 +26,7 @@ public interface FlightService {
 	
 	List<Flights> findAllByOriginAndDestination(String origin, String detsination);
 	
-	List<Flights> findAllByOriginAndDestinationAndDateOfFlight(String origin, String detsination, Date dof);
+	List<Flights> findAllByOriginDestinationAndDateOfFlight(String origin, String detsination, Date dof);
 	
 	void deleteById(Long id);
 	

@@ -43,23 +43,22 @@ public class RestLoginController {
 		AppUser user = userService.findByEmail(principal.getName());
 		//user.getRoles().forEach(item->System.out.println("User Roles from authbean: "+item.getRoleName()));	
 		
-		System.out.println(session.getAttribute("sessionId"));
+		//System.out.println(session.getAttribute("sessionId"));
 		return user;		
 	}
 	
 	
 	
     @GetMapping("/session-logout")
-    public String fetchSignoutSite(HttpServletRequest request, HttpServletResponse response, 
-    		RedirectAttributes redirectAttr,HttpSession session, Principal principal) {     	
+    public String fetchSignoutSite(HttpServletRequest request, HttpServletResponse response) {     	
     	
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
           if (auth != null) {
               new SecurityContextLogoutHandler().logout(request, response, auth);	
-              return "redirect:/";
+              return "logged out successfuly!";
   	  		
           }
-          return "redirect:/";          
+          return "logged out successfuly!";        
     }
     
  

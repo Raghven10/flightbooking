@@ -3,6 +3,8 @@
  */
 package com.flight.booking.dao;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,7 @@ import com.flight.booking.entity.AppUser;
 public interface AddressRepository extends CrudRepository<Address, Long> {
 
 	
-	Address findByAppUser(AppUser appUser);
+	List<Address> findAllByAppUser(AppUser appUser);
+
 
 }

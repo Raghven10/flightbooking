@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -34,14 +34,17 @@ private static final long serialVersionUID = 1L;
 	private String destination;
 	
 	@Column
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)	
 	private Date dateOfFlight;	
 	
 	@Column
-	private String noOfSeats;
+	private int noOfSeats;
 	
 	@Column
-	@DateTimeFormat(pattern="hh:MM")
+	private int price;
+	
+	@Column
+	@Temporal(TemporalType.TIME)	
 	private Date timeOfFlight;
 	
 	@Column

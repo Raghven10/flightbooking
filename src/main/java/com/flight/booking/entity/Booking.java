@@ -12,53 +12,52 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
 
 /**
  * @author Navin
- * 
- ####################################################################################
- * ########### This Class intends to store address of all users #####################
- * ####################################################################################
  *
  */
-@Data
 @Entity
-@Table(name = "ADDRESS")
-public class Address implements Serializable{
+@Table
+@Data
+public class Booking implements Serializable {
+
 	
-	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
-
 	@Id
-	@Column
+	@Column  //Booking PNR no
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long pnr_id;  
 	
 	@Column
-	private String street1;
-	
-	@Column
-	private String street2;
-	
-	@Column
-	private String city;
-	
-	@Column
-	private String pinCode;
-	
-	@Column
-	private String state;
-	
-	@Column
-	private String country;
+	private String status; // Pending/Booked/Cancelled
 	
 	@ManyToOne
 	@JoinColumn(name="APP_USER_ID")
 	private AppUser appUser;
+	
+	@OneToOne
+	@JoinColumn(name="ADDRESS_ID")
+	private Address address;
+	
+	@OneToOne
+	@JoinColumn(name="FLIGHT_ID") // Booked Flight 
+	private Flights flight;
+	
+	@OneToOne
+	@JoinColumn(name="Transaction_ID")
+	private Payment payment;
 
+	public Booking() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

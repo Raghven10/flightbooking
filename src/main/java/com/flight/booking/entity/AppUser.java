@@ -87,7 +87,7 @@ public class AppUser implements Serializable {
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinTable(name="LRNO_APP_USER_ROLES",
+	@JoinTable(name="APP_USER_ROLES",
 			joinColumns = {
 		            @JoinColumn(name = "app_user_id", referencedColumnName = "id")
 		        },

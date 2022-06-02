@@ -72,9 +72,11 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public Address findByUserId(AppUser appUser) {
+	public List<Address> findByUserId(AppUser user) {
 		
-		return addressRepository.findByAppUser(appUser);
+		return addressRepository.findAllByAppUser(user);
 	}
+
+	
 
 }

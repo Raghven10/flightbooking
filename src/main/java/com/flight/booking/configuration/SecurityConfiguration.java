@@ -80,18 +80,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/sysadmin/*").hasAnyRole("SYSADMIN")
 				.antMatchers("/admin/*").hasAnyRole("ADMIN","SYSADMIN")
 				.antMatchers("/sales/*").hasAnyRole("SALES","MANAGER","MARKETING_EXECUTIVE",
-				"ADMIN","SYSADMIN")
-				.antMatchers("/student/*").hasAnyRole("STUDENT","ADMIN","SYSADMIN")
+				"ADMIN","SYSADMIN")				
 				.antMatchers("/user/**").hasAnyRole("USER","ADMIN","SYSADMIN")
 				 
 				 .antMatchers("/","/assets/**","/register/**","/css/**","/img/**","/js/**",
-				 "/lib/**","/error","/teacher/**").permitAll()
+				 "/lib/**","/error").permitAll()
 				 
-        .anyRequest().authenticated()           
+       // .anyRequest().authenticated()           
 
-				.and() .formLogin() .loginPage("/") .loginProcessingUrl("/login")
-			.usernameParameter("email") .passwordParameter("password")
-			 .defaultSuccessUrl("/redirectDashboard").failureUrl("/loginFailure")
+				//.and().formLogin() .loginPage("/") .loginProcessingUrl("/login")
+			//.usernameParameter("email") .passwordParameter("password")
+			 //.defaultSuccessUrl("/redirectDashboard").failureUrl("/loginFailure")
 			
        
 		.and() 

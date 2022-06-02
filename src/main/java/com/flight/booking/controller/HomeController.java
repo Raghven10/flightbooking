@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.flight.booking.entity.AppUser;
 import com.flight.booking.service.AppUserService;
@@ -20,7 +21,7 @@ import com.flight.booking.service.RoleService;
  * @author navin
  *
  */
-@Controller
+@RestController
 @CrossOrigin(origins="*")
 public class HomeController {
 	
@@ -34,10 +35,9 @@ public class HomeController {
 	
 
 	@GetMapping("/")
-	public String homepage(Model model) {
+	public String homepage() {		
 		
-		
-		return "index";	
+	 return "HomePage";	
 	}
 	
 	

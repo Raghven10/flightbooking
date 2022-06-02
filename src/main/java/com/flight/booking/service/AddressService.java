@@ -25,6 +25,6 @@ public interface AddressService {
 	
 	Address findById(Long id);
 
-	Address findByUserId(AppUser user);
+	List<Address> findByUserId(AppUser user);
 
 }

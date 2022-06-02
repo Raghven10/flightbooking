@@ -74,7 +74,7 @@ public class FlightsServiceImpl implements FlightService {
 	}
 
 	@Override
-	public List<Flights> findAllByOriginAndDestinationAndDateOfFlight(String origin, String detsination, Date dof) {
+	public List<Flights> findAllByOriginDestinationAndDateOfFlight(String origin, String detsination, Date dof) {
 
 
 		List<Flights> flights = repos.findAllByOriginAndDestinationAndDateOfFlight(origin, detsination, dof);

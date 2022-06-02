@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.flight.booking.entity.AppUser;
 import com.flight.booking.entity.Role;
@@ -22,7 +24,8 @@ import com.flight.booking.service.AppUserService;
  * @author navin
  *
  */
-@Controller
+@RestController
+@CrossOrigin
 @RequestMapping("/admin")
 public class AdminController {
 	
