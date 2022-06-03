@@ -3,8 +3,6 @@
  */
 package com.flight.booking.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,13 +22,9 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class Booking implements Serializable {
+public class Booking{
 
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column  //Booking PNR no
@@ -39,6 +33,9 @@ public class Booking implements Serializable {
 	
 	@Column
 	private String status; // Pending/Booked/Cancelled
+	
+	@Column
+	private Integer noOfSeatsBooked;
 	
 	@ManyToOne
 	@JoinColumn(name="APP_USER_ID")

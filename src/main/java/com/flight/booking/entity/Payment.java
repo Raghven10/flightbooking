@@ -23,7 +23,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Flights")
+@Table(name="Payment")
 public class Payment implements Serializable {
 
 	/**
@@ -47,7 +47,7 @@ public class Payment implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="BOOKING_ID")
-	private Booking booking_id;
+	private Booking booking;
 	
 	public Payment() {
 		// TODO Auto-generated constructor stub

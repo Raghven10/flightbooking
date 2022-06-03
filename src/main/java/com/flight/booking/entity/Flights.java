@@ -47,7 +47,7 @@ private static final long serialVersionUID = 1L;
 	private int price;
 	
 	@Column
-	@Temporal(TemporalType.TIME)	
+	@Temporal(TemporalType.DATE)	
 	private Date timeOfFlight;
 	
 	@Column

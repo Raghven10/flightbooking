@@ -42,6 +42,12 @@ public class BookingController {
 	    return service.findAllByAppUser(user);
 	}
 	
+	@GetMapping(path="/booking-details/{id}")
+	public Booking bookingDetails(@PathVariable ("id") Long id) {
+		
+		return service.findById(id);
+	}
+	
 	@PostMapping(path="/create-booking")
 	public Booking saveBooking(@RequestBody Booking booking, Principal principal) {
 		

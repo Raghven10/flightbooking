@@ -25,11 +25,12 @@ public class PaymentServiceImpl implements PaymentService{
 	public void save(Payment a) {
 		
 		System.out.println("Payment Body: "+a);
-		repos.save(a);
-		Booking booking = a.getBooking_id();
+		Booking booking = a.getBooking();
+		
+		
 		System.out.println("Booking Details:   "+booking);
 		booking.setStatus("BOOKED");		
-		
+		repos.save(a);
 		service.finalizeBooking(booking);
 	}
 
