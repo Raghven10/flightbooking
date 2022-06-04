@@ -60,4 +60,10 @@ public class AirportServiceImpl implements AirportService {
 		return repos.findById(id).orElse(null);
 	}
 
+
+	@Override
+	public void delete(Long id) {
+		repos.deleteById(id);		
+	}
+
 }

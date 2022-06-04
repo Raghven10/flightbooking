@@ -16,9 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flight.booking.entity.AppUser;
 import com.flight.booking.service.AppUserService;
@@ -40,10 +38,7 @@ public class RestLoginController {
 	@GetMapping(path="/restauth")
 	public AppUser basicAuthBean(Principal principal, HttpSession session) throws Exception{	
 		
-		AppUser user = userService.findByEmail(principal.getName());
-		//user.getRoles().forEach(item->System.out.println("User Roles from authbean: "+item.getRoleName()));	
-		
-		//System.out.println(session.getAttribute("sessionId"));
+		AppUser user = userService.findByEmail(principal.getName());		
 		return user;		
 	}
 	

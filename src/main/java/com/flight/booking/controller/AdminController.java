@@ -9,11 +9,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.flight.booking.entity.AppUser;
@@ -26,10 +24,21 @@ import com.flight.booking.service.AppUserService;
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/admin")
 public class AdminController {
 	
 @Autowired private AppUserService userService;
+
+
+	//Proposed APIs - Admin login 
+	
+
+	@GetMapping(path="/api/v1.0/flight/admin/login")
+	public AppUser adminLogin(Principal principal, HttpSession session) throws Exception{	
+		
+		AppUser user = userService.findByEmail(principal.getName());		
+		return user;		
+	}
+
 
 	
 	@GetMapping(value="/dashboard")
@@ -56,6 +65,9 @@ public class AdminController {
 		model.addAttribute("users",users);
 	    return "/admin/AllUsersList";
 	}
+	
+
+	
 	
 	
 	

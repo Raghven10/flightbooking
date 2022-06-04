@@ -16,8 +16,10 @@ public interface AirportService {
 	void save(Airport a);
 
 	void update(Airport a);
+	
+	void delete(Long id);
 
-	List<Airport> findAll();
+	List<Airport> findAll();	
 	
 	void deleteById(Long id);
 	

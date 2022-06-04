@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.flight.booking.dao.BookingRepository;
 import com.flight.booking.entity.AppUser;
 import com.flight.booking.entity.Booking;
 import com.flight.booking.entity.Payment;
@@ -19,20 +20,53 @@ import com.flight.booking.service.BookingService;
 import com.flight.booking.service.PaymentService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="*")
 public class BookingController {
 
 	@Autowired BookingService service;
 	
+	@Autowired BookingRepository repos;
+	
 	@Autowired AppUserService userService;
 	
 	@Autowired PaymentService payService;
+	
+	//search booking with Email ID
+	@GetMapping(path="/api/v1.0/flight/booking/history/{emailId}")
+	public List<Booking> findBookingsByEmailId(@PathVariable ("emailId") String emailId) {
+			
+		AppUser user = userService.findByEmail(emailId);
+			
+		return service.findAllByAppUser(user);
+	}
+	
+	
+	//search booking with pnr
+	@GetMapping(path="/api/v1.0/flight/ticket/{pnr}")
+	public Booking searchTicket(@PathVariable ("pnr") Long pnr) {
+			
+		return service.findById(pnr);
+	}
+	
+	//Cancel a Booked ticket
+	
+	@GetMapping(path="/api/v1.0/flight/booking/cancel/{pnr}")
+	public Booking cancelBooking(@PathVariable("pnr") Long id) {				
+			
+		Booking booking = service.findById(id);
+		service.cancel(booking);
+			
+		return booking;
+			
+	}
+	
 	
 	@GetMapping(path="/bookking-all")
 	public List<Booking> bookingsAll() {
 		
 	    return service.findAll();
 	}
+	
 	
 	@GetMapping(path="/user-bookking-all")
 	public List<Booking> bookingsAllUser(Principal principal) {
@@ -67,16 +101,6 @@ public class BookingController {
 	}
 	
 	
-	@PostMapping(path="/cancel-booking/{id}")
-	public Booking payment(@PathVariable("id") Long id) {		
-		
-		
-		Booking booking = service.findById(id);
-		service.cancel(booking);
-		
-		return booking;
-		
-	}
 	
 	
 	

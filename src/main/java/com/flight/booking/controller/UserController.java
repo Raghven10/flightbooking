@@ -44,7 +44,7 @@ public class UserController {
 	@Autowired AddressService addressService;
 	@Autowired ServletContext context;
 	
-	@GetMapping(value="/dashboard")
+	@GetMapping(value="/user/dashboard")
 	private String userDashboard(Principal principal, Model model, HttpSession session) {		
 		
 		

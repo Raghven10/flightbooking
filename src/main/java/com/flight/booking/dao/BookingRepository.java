@@ -19,7 +19,8 @@ import com.flight.booking.entity.Booking;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 	
-	List<Booking> findAllByAppUser(AppUser user);
+	List<Booking> findAllByAppUser(AppUser user);	
 	
 	List<Booking> findAllByAppUserAndStatus(AppUser user, String status);
+
 }
